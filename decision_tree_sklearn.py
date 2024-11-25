@@ -10,7 +10,7 @@ if __name__ == "__main__":
     test_labels = np.load("test_labels.npy")
     
     # Initialize and train the Scikit-Learn Decision Tree model
-    tree_sklearn = DecisionTreeClassifier(criterion="gini", max_depth=50, random_state=42)
+    tree_sklearn = DecisionTreeClassifier(criterion="gini", max_depth=30, random_state=42)
     tree_sklearn.fit(train_features, train_labels)
     
     # Predict and evaluate
@@ -24,3 +24,8 @@ if __name__ == "__main__":
     print("Confusion Matrix:\n", conf_matrix)
     print("Precision:", precision)
     print("Recall:", recall)
+
+    # Save the confusion matrix to a CSV file
+    csv_filename = "cm_sklearn_Tree.csv"
+    np.savetxt(csv_filename, conf_matrix, delimiter=",", fmt='%d')
+    print(f"Confusion matrix saved to {csv_filename}")

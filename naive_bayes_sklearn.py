@@ -28,3 +28,8 @@ if __name__ == "__main__":
     print("Confusion Matrix:\n", conf_matrix)
     print("Precision:", precision)
     print("Recall:", recall)
+
+    # Save the confusion matrix to a CSV file
+    csv_filename = "cm_sklearn_naiveb.csv"
+    np.savetxt(csv_filename, conf_matrix, delimiter=",", fmt='%d')
+    print(f"Confusion matrix saved to {csv_filename}")

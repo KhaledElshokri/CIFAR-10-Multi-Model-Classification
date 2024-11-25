@@ -1,7 +1,8 @@
 import numpy as np
+from sklearn.metrics import accuracy_score, confusion_matrix, precision_score, recall_score
 
 class DecisionTree:
-    def __init__(self, max_depth=10, min_samples_split=10, max_features=None):
+    def __init__(self, max_depth=50, min_samples_split=10, max_features=None):
         self.max_depth = max_depth
         self.min_samples_split = min_samples_split
         self.max_features = max_features
@@ -83,10 +84,22 @@ if __name__ == "__main__":
     test_labels = np.load("test_labels.npy")
     
     # Initialize and train the custom Decision Tree model
-    tree_custom = DecisionTree(max_depth=10, min_samples_split=10, max_features=10)
+    tree_custom = DecisionTree(max_depth=20, min_samples_split=10, max_features=10)
     tree_custom.fit(train_features, train_labels)
     
     # Predict and evaluate
     predictions = tree_custom.predict(test_features)
     accuracy = np.mean(predictions == test_labels)
-    print("Custom Decision Tree Accuracy:", accuracy * 100)
+    conf_matrix = confusion_matrix(test_labels, predictions)
+    precision = precision_score(test_labels, predictions, average="macro")
+    recall = recall_score(test_labels, predictions, average="macro")
+    
+    print("Custom Decision Tree Accuracy:", accuracy)
+    print("Confusion Matrix:\n", conf_matrix)
+    print("Precision:", precision)
+    print("Recall:", recall)
+
+    # Save the confusion matrix to a CSV file
+    csv_filename = "cm_custom_Tree.csv"
+    np.savetxt(csv_filename, conf_matrix, delimiter=",", fmt='%d')
+    print(f"Confusion matrix saved to {csv_filename}")
