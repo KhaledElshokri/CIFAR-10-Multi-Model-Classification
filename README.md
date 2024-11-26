@@ -79,7 +79,10 @@ This is a project that implements multiple machine learning models, including Na
 * decision_tree_custom.py is my custom implementation of an N-dimensional tree that classifies CIFAR-10 images using a deterministic approach.
 * decision_tree_sklearn.py is an implementation that uses the DecisionTreeClassifier object from sklearn to classify the images using the gini index.
 ### Multi-Layer Perception (MLP)
-* 
+* MLP_pytorch.py is an implementation of a multi-layer perceptron that uses 2 hidden layers of 512 neurons each with ReLU activation and batch normalisation in the second layer with mini-batch gradient descent.
+### Convolutional Neural Network (CNN)
+* vg11_model.py is the implementation of the VGG11 convolutional neural network, a variant of the VGG architecture where the features block consists of a series of convolutional layers with ReLU activations, batch normalization, and max-pooling to extract hierarchical features from the input image. The classifier block is a fully connected network with dropout layers, which processes the extracted features and outputs class scores for 10 classes in the CIFAR-10 dataset.
+* train_vg11.py is the implementation to load the CIFAR-10 dataset and test the CNN specified in the vg11_model.py.
 
 ## Results
 
