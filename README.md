@@ -70,6 +70,8 @@ This is a project that implements multiple machine learning models, including Na
    python train_vgg11.py
    ```
    * This step might take alot of time (~ 2 hours) if you are running it directly on cpu locally, try using google collab platform to have access to better resources. use this link to learn more on how to use it https://colab.research.google.com/drive/16pBJQePbqkz3QFV54L4NIkOn1kwpuRrj
+   * If you want to use google collab go to this link https://colab.research.google.com/ create a new notebook and copy paste the vg11_collab.py file in the code section. Make sure to change the runtime type from the task bar to GPU instead of CPU.
+   * Using google collab, it takes 10 minutes to download, train and test the model.
 
 ## Model Details
 ### Naive Bayes
