@@ -103,8 +103,8 @@ if __name__ == "__main__":
     # Create DataLoaders
     train_dataset = TensorDataset(train_features, train_labels)
     test_dataset = TensorDataset(test_features, test_labels)
-    train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True)
-    test_loader = DataLoader(test_dataset, batch_size=32, shuffle=False)
+    train_loader = DataLoader(train_dataset, batch_size=2, shuffle=True)
+    test_loader = DataLoader(test_dataset, batch_size=2, shuffle=False)
 
     # Initialize the MLP model, loss function, and optimizer
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -113,7 +113,7 @@ if __name__ == "__main__":
     optimizer = optim.SGD(model.parameters(), lr=0.001, momentum=0.9)
 
     # Train the model
-    epochs = 30
+    epochs = 50
     for epoch in range(epochs):
         train_loss = train_model(model, train_loader, criterion, optimizer, device)
         test_loss, test_accuracy = evaluate_model(model, test_loader, criterion, device)
